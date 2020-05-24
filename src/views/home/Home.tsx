@@ -1,14 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import { View, Text, Image } from "react-native";
-import Card from "../../components/Card";
+import Card from "@components/Card";
 
 const Home = () => {
   return (
     <Container>
       {/* title */}
       <TitleBar>
-        <Avatar source={require('../../assets/avatar.jpg')} />
+        <Avatar source={require('@assets/avatar.jpg')} />
         <TitleBarContent>
           <Title>Hello home</Title>
           <Name>Javier Llerenas</Name>
