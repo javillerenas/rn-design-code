@@ -10,7 +10,7 @@ const Home = () => {
       <TitleBar>
         <Avatar source={require('@assets/avatar.jpg')} />
         <TitleBarContent>
-          <Title>Hello home</Title>
+          <Title>Welcome back,</Title>
           <Name>Javier Llerenas</Name>
         </TitleBarContent>
         <Icon></Icon>
@@ -30,13 +30,11 @@ const Home = () => {
 
 const Container = styled(View)`
   flex: 1;
-  /* align-items: center;
-  justify-content: center; */
 `;
 
 const TitleBar = styled(View)`
   width: 100%;
-  margin-top: 50px;
+  margin-top: 80px;
   padding: 0px 20px 0px;
   flex-direction: row;
   align-items: center;
@@ -51,7 +49,8 @@ const Avatar = styled(Image)`
 // second
 const TitleBarContent = styled(View)`
   flex: 3;
-  border: 1px solid orange;
+  height: 40px;
+  margin-left: 10px;
 `;
 
 const Title = styled(Text)`
@@ -80,6 +79,7 @@ const Subtitle = styled(Text)`
   margin-left: 20px;
   margin-top: 50px;
   text-transform: uppercase;
+  height: 30px;
 `;
 
 export default Home;
