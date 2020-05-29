@@ -1,19 +1,32 @@
 import React from "react";
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, ImageRequireSource } from "react-native";
 import styled from "styled-components";
 
-const Card = () => {
+export interface ICard {
+  title: string;
+  subtitle: string;
+  caption: string;
+  logoUrl: ImageRequireSource;
+  backgroundUrl: ImageRequireSource;
+}
+const Card = ({
+  title,
+  subtitle,
+  caption,
+  logoUrl,
+  backgroundUrl
+}: ICard) => {
   return (
     <Container>
       <Cover>
-        <ImageX source={require("@assets/background2.jpg")} />
-        <Title>Styled Components</Title>
+        <ImageX source={backgroundUrl} />
+        <Title>{title}</Title>
       </Cover>
       <Content>
-        <Logo source={require("@assets/logo-react.png")} />
+        <Logo source={logoUrl} style={{resizeMode: 'contain'}} />
         <ContentText>
-          <Subtitle>React Native</Subtitle>
-          <Caption>5 of 12 Sections</Caption>
+          <Subtitle>{subtitle}</Subtitle>
+          <Caption>{caption}</Caption>
         </ContentText>
       </Content>
     </Container>
@@ -54,7 +67,6 @@ const Title = styled(Text)`
 `;
 
 // second part
-
 const Content = styled(View)`
   flex: 1;
   flex-direction: row;

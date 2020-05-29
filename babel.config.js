@@ -11,6 +11,7 @@ module.exports = function(api) {
             '@assets': './assets/',
             '@components': './src/components',
             '@views': './src/views',
+            '@constants': './src/constants',
           }
         }
       ],
