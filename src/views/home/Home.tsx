@@ -7,41 +7,26 @@ import {
   ScrollView,
   SafeAreaView,
   StyleSheet,
+  Dimensions
 } from "react-native";
 import Card, { ICard } from "@components/Card";
 import Chip from "@components/Chip";
+import Course from "@components/Course";
 import { Ionicons } from "@expo/vector-icons";
 /** import mock data */
-import { continueLearningCards } from "@constants/data/data";
+import {
+  continueLearningCards,
+  chipData,
+  coursesData,
+} from "@constants/data/data";
 
-const chipData = [
-  {
-    name: "figma",
-    color: "white",
-    image: require("@assets/logo-figma.png"),
-  },
-  {
-    name: "framer x",
-    color: "white",
-    image: require("@assets/logo-framerx.png"),
-  },
-  {
-    name: "sketch",
-    color: "white",
-    image: require("@assets/logo-sketch.png"),
-  },
-  {
-    name: "vue",
-    color: "white",
-    image: require("@assets/logo-vue.png"),
-  },
-];
+const screenWidth = Dimensions.get("window").width;
 
 const Home = () => {
   return (
     <RootView>
       <SafeAreaView>
-        <ScrollView style={{ height: "100%"}}>
+        <ScrollView style={{ height: "100%" }}>
           {/* title */}
 
           <TitleBar>
@@ -58,7 +43,7 @@ const Home = () => {
             <ScrollView
               horizontal={true}
               showsHorizontalScrollIndicator={false}
-              style={{ paddingLeft: 20, paddingBottom: 20}}
+              style={{ paddingLeft: 20, paddingBottom: 20 }}
             >
               {chipData.map((props: any, index: number) => (
                 <ChipWrapper key={index}>
@@ -70,11 +55,25 @@ const Home = () => {
 
           {/* continue learning */}
           <Subtitle>Continue Learning</Subtitle>
-          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={{paddingBottom: 30}}>
+          <ScrollView
+            horizontal={true}
+            showsHorizontalScrollIndicator={false}
+            style={{ paddingBottom: 30 }}
+          >
             {continueLearningCards.map((props: ICard, index: number) => (
               <Card {...props} key={index} />
             ))}
           </ScrollView>
+
+          {/* Popular Courses */}
+          {/* <Section> */}
+          <Subtitle>{"Popular Courses".toUpperCase()}</Subtitle>
+          <CoursesContainer>
+            {coursesData.map((course: any, index: number) => (
+              <Course {...course} key={index} />
+            ))}
+          </CoursesContainer>
+          {/* </Section> */}
         </ScrollView>
       </SafeAreaView>
     </RootView>
@@ -122,8 +121,8 @@ const Section = styled(View)`
   margin: 40px 0 0;
   height: 75px;
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
 `;
 
 const ChipWrapper = styled(View)`
@@ -145,6 +144,13 @@ const Subtitle = styled(Text)`
   margin-top: 20px;
   text-transform: uppercase;
   height: 30px;
+`;
+
+// Courses
+const CoursesContainer = styled(View)`
+  flex-direction: column;
+  width: ${screenWidth};
+  align-items: center;
 `;
 
 export default Home;
